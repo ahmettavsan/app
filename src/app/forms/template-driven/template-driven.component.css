@@ -1,0 +1,12 @@
+/* .ng-dirty[type=text]
+{
+  background-color: green;
+} */
+
+.invalid{
+  border: 2px solid red;
+}
+
+.valid{
+  border:2px solid greenyellow;
+}

@@ -1,0 +1,72 @@
+<p>template-driven works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form #productForm="ngForm" (ngSubmit)="saveProduct(productForm)" >
+<div>
+  <h3>Form Properties</h3>
+  <ul>
+    <li>Valid:{{productForm.valid}}</li>
+    <li>invalid:{{productForm.invalid}}</li>
+    <li>errors:{{productForm.errors | json}}</li>
+    <li>untouched:{{productForm.untouched}}</li>
+    <li>touched:{{productForm.touched}}</li>
+    <li>dirty:{{productForm.dirty}}</li>
+    <li>pristine:{{productForm.pristine}}</li>
+
+
+
+  </ul>
+</div>
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input [ngClass]="{invalid:isInValid(txtName.control),
+          valid:isValid(txtName.control)}"  type="text" #txtName="ngModel" class="form-control" name="txtName"  [ngModel]="newProduct?.name" required maxLength="10" minlength="5">
+          <div class="form-text text-danger">
+<div *ngIf="txtName.invalid && (txtName.dirty || txtName.touched)">
+  <div *ngIf="txtName.errors?.['required']">
+    ürün ismi gereklidir...
+  </div>
+  <div *ngIf="txtName.errors?.['minlength'] || txtName.errors?.['maxlength']">
+    ürün ismi en az 5 karekter en fazla 10 karetker olabilir...
+  </div>
+</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Price</label>
+          <input type="number" #txtPrice="ngModel" class="form-control" name="txtPrice"  [ngModel]="newProduct?.price" required max="2000" min="100">
+          <div>
+            <h3>Price Properties</h3>
+            <ul>
+              <li>Valid:{{txtPrice.valid}}</li>
+              <li>invalid:{{txtPrice.invalid}}</li>
+              <li>errors:{{txtPrice.errors | json}}</li>
+              <li>untouched:{{txtPrice.untouched}}</li>
+              <li>touched:{{txtPrice.touched}}</li>
+              <li>dirty:{{txtPrice.dirty}}</li>
+              <li>pristine:{{txtPrice.pristine}}</li>
+
+
+
+            </ul>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Stock</label>
+          <input type="text" class="form-control" name="txtStock"  [ngModel]="newProduct?.stock">
+
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Category</label>
+          <input type="text" class="form-control" name="txtCategory"  [ngModel]="newProduct?.category">
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+      </form>
+    </div>
+  </div>
+</div>
+

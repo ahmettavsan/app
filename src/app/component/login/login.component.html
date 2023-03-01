@@ -1,0 +1,61 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 offset-md-5">
+      <form  [formGroup]="memberForm" (ngSubmit)="save()" >
+        <div class="form-group">
+          <label for="email">Email</label> <br>
+          <input type="text" class="form-control" name="email" formControlName="email" >
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('email')">
+              <div *ngIf="isInvalidControl('email', 'required')">
+               Email gereklidir
+              </div>
+              <div *ngIf="isInvalidControl('email', 'emailFormat')">
+               email uygun formatta değil
+              </div>
+            </div>
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label> <br>
+          <input type="password" formControlName="password" name="password" class="form-control" >
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('password')">
+              <div *ngIf="isInvalidControl('password', 'required')">
+              parola gereklidir
+              </div>
+              <div *ngIf="isInvalidControl('password', 'passwordFormat')">
+               parola uygun formatta değil
+              </div>
+            </div>
+        </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" formControlName="isRememberMe" type="checkbox" >
+          <label class="form-check-label" for="flexCheckDefault">
+            Beni Hatırla
+          </label>
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary">Kaydet</button>
+
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="newMember?.email">
+  <div class="row">
+  <label >email:</label>
+  <h2>{{newMember?.email}}</h2>
+  <label >password:</label>
+  <h2>{{newMember?.password}}</h2>
+  </div>
+</div>
+
+
